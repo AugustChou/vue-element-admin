@@ -233,6 +233,18 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/from',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/from/index'),
+        name: 'From',
+        meta: { title: 'From', icon: 'tab' }
+      }
+    ]
+  },
 
   {
     path: '/tab',
