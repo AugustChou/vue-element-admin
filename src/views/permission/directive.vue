@@ -3,8 +3,8 @@
     <switch-roles @change="handleRolesChange" />
     <div :key="key" style="margin-top:30px;">
       <div>
-        <span v-permission="['admin']" class="permission-alert">我是admin</span>
-        <span v-permission="['editor']" class="permission-alert">我是editor</span>
+        <span v-permission="['admin']">我是admin我是admin我是admin</span>
+        <span v-permission="['editor']">我是editor我是editor我是editor</span>
       </div>
       <div>
         <span v-permission="['admin']" class="permission-alert">
