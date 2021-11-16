@@ -4,6 +4,8 @@
     <Area #default="{validate}" :rules="rules" :value="value2">
       <textarea v-model="value2" placeholder="RanderLess" @blur=" validate" />
     </Area>
+    <input v-model="value3" type="text" placeholder="Mixin" @blur="blur">
+    {{ Errmsg }}
     <div class="app-container">
       <el-form ref="form" :model="form" label-width="120px">
         <el-form-item label="活动名称">
@@ -52,7 +54,7 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="活动形式">
-          <Area #default="validate" :rules="rules" :value="value2">
+          <Area #default="{validate}" :rules="rules" :value="value2">
             <textarea v-model="value2" @blur=" validate" />
           </Area>
         </el-form-item>
@@ -69,16 +71,20 @@
 import HocFunc from '@/components/Hoc/Input/hoc'
 import CustonInput from '@/components/Hoc/Input/index.vue'
 import Area from '@/components/RandLess/index.vue'
+import ValidateMixin from '@/components/Mixin/index.vue'
 const HocCustomCom = HocFunc(CustonInput)
 export default {
   components: {
     HocCustomCom,
     Area
   },
+  mixins: [ValidateMixin],
   data() {
     return {
       value: '',
       value2: '',
+      value3: '',
+      Errmsg: '',
       rules: [
         {
           test: function(value) {
@@ -99,6 +105,9 @@ export default {
     }
   },
   methods: {
+    blur() {
+      this.validate(this.value3, this.Errmsg)
+    },
     onSubmit() {
       this.$message('submit!')
     },

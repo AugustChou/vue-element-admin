@@ -1,27 +1,17 @@
-<template>
-  <div>
-    <input type="text" @blur="blur">
-    {{ Errmsg }}
-  </div>
-</template>
-
 <script>
-import ValidateMixin from './mixin.vue'
 export default {
-  mixins: [ValidateMixin],
-  data() {
-    return {
-      Errmsg: ''
-    }
-  },
   methods: {
-    blur() {
-      this.validate()
+    validate(value, Errmsg) {
+      const rules = /a/
+      console.log(rules.test(value))
+      console.log(value)
+      if (rules.test(value)) {
+        this.Errmsg = ''
+      } else {
+        this.Errmsg = '请输入一个包含a的字符串'
+      }
+      return true
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
